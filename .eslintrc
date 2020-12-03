@@ -1,0 +1,21 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "parser": "babel-eslint",
+  "globals": {
+    "cc": true
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "class-methods-use-this": "off",
+    "no-bitwise": "off",
+    "no-control-regex": "off",
+    "func-names": "off",
+    "import/order": "off",
+    "linebreak-style": [0, "error", "windows"]
+  },
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+  }
+}
