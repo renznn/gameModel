@@ -9,8 +9,19 @@ import BaseComponent from './BaseComponent';
 
 const { ccclass, property } = cc._decorator;
 
+/**
+ *  @class PopLayer
+ *  @extends BaseComponent
+ *  @classdesc  弹出层基类
+ */
 @ccclass
 export default abstract class PopLayer extends BaseComponent {
+  /**
+   * @abstract
+   * @description 渲染当前弹出界面
+   * @param {*} []
+   * @memberof PopLayer
+   */
   public abstract updateView(...[]);
 
   _onDestory() {
@@ -34,8 +45,12 @@ export default abstract class PopLayer extends BaseComponent {
     e.stopPropagation();
   }
 
+  /**
+   * @description 触摸屏蔽添加
+   *
+   * @memberof PopLayer
+   */
   touchEnd(e) {
-    // console.log(this.node.getBoundingBoxToWorld().contains(e.getLocation()))
     //判断是否在界面外
     //this.node替换成对应的判断node
     if (!this.node.getBoundingBoxToWorld().contains(e.getLocation())) {
@@ -45,6 +60,12 @@ export default abstract class PopLayer extends BaseComponent {
     e.stopPropagation();
   }
 
+  /**
+   *
+   * @function closePopLayer
+   * @description 子类重写此方法关闭弹出页
+   * @date: 2021-01-29 18:49:26
+   */
   closePopLayer() {
     console.log('close');
   }

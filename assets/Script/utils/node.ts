@@ -1,6 +1,8 @@
 /**
  *
- * @function fade_out 淡出_释放
+ * @function fade_out
+ *
+ * @description 淡出_释放
  *
  * @param {cc.Node} node -- 节点
  * @param {number} time -- 时常
@@ -23,7 +25,9 @@ function fade_out(node: cc.Node, time: number = 0.5, free: boolean = true) {
 
 /**
  *
- * @function fade_in 淡入
+ * @function fade_in
+ *
+ * @description 淡入
  *
  * @param {cc.Node} node -- 节点
  * @param {number} time -- 时常
@@ -39,12 +43,13 @@ function fade_in(node: cc.Node, time: number = 0.5) {
 }
 
 /**
- * 查找节点
+ * @function findByName
+ * @description 查找节点
  *
  * @param {string} name 节点名字
  * @param {cc.Node} ele 节点
  * @param {boolean} isChild 是否找子节点
- * @returns {any}
+ * @returns {cc.Node | null}
  *
  * 使用例子：
  * utils.node.findByName('name') // 遍历所有节点查找
@@ -56,7 +61,7 @@ function findByName(
   name: string,
   ele?: cc.Node,
   isChild: boolean = true
-): cc.Node {
+): cc.Node | null {
   if (!name) {
     return null;
   }

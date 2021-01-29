@@ -7,6 +7,11 @@
 
 const { ccclass, property } = cc._decorator;
 
+/**
+ *  @class Canvas
+ *  @extends cc.Component
+ *  @classdesc  画布对象 添加淡入淡出效果
+ */
 @ccclass
 export default class Canvas extends cc.Component {
   // LIFE-CYCLE CALLBACKS:

@@ -1,5 +1,3 @@
-import config from '../common/config';
-
 interface AjaxOption {
   url: string;
   type?: 'POST' | 'GET';
@@ -43,7 +41,7 @@ export function ajax(opts: AjaxOption) {
     'Content-Type',
     'application/x-www-form-urlencoded;charset=utf-8'
   );
-  xhr.setRequestHeader('token', config.token);
+
   cc.sys.platform == cc.sys.WIN32 &&
     xhr.setRequestHeader(
       'User-Agent',

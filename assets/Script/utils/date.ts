@@ -1,15 +1,29 @@
+declare type DateType = string | number | Date;
+
 class DateFunc {
   private _time: Date;
 
-  constructor(value?: string | number | Date) {
+  constructor(value?: DateType) {
     if (value) {
       this._time = new Date(value);
     } else {
       this._time = new Date();
     }
-    // console.log(this._time);
   }
-  // 格式化时间
+
+  /**
+   *
+   * @function formate
+   * @description 时间格式化
+   * @param {string} fmt -- 格式
+   * @return {string} 格式时间
+   * @date: 2021-01-29 16:15:46
+   *
+   * @example
+   *```
+   * utils.date().formate('yyyy-MM-dd hh:mm:ss') // 2021-01-29 16:19:56
+   *```
+   */
   formate(fmt?: string): string {
     if (!fmt) {
       fmt = 'yyyy-MM-dd hh:mm:ss';
@@ -59,23 +73,26 @@ class DateFunc {
   }
 }
 
-
 /**
  *
- * @function date 时间
- *
- * @param {string | number | Date} value -- 时间字符串|时间戳|日期
+ * @function date
+ * @description 时间函数
+ * @param {DateType} value -- 时间字符串|时间戳|日期
  * @date: 2020-11-27 16:39:08
  *
- * 例子：
+ * @returns {DateFunc}
+ *
+ * @example
+ * ```
  * utils.date(1567991349000).getTime()
  * utils.date().formate('dd hh')
  * utils.date(1567991349000);
  * utils.date('2019-09-09 09:09:09');
  * utils.date(new Date());
+ * ```
  */
 
-function date(value?: string | number | Date) {
+function date(value?: DateType): DateFunc {
   return new DateFunc(value);
 }
 

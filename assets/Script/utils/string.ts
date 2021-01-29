@@ -1,12 +1,16 @@
 /**
  *
- * @function formateMoney 格式化钱 ( $ _ $ )
- *
+ * @function formateMoney
+ * @description 格式化钱 ( $ _ $ )
  * @param {number | string} num -- 金额
  * @return {string}
  * @date: 2020-11-27 16:45:39
  *
+ * @example
  * 例子：
+ * ```
+ * utils.string.formateMoney(100000)  //100,000
+ * ```
  */
 function formateMoney(num?: number | string): string {
   if (!num) return '0';
@@ -16,14 +20,20 @@ function formateMoney(num?: number | string): string {
 
 /**
  *
- * @function formateUsername 用户名隐藏
+ * @function formateUsername
+ *
+ * @description 用户名隐藏
  *
  * @param {string} name -- 用户名
  * @param {number} length -- 长度
  * @return {string}
  * @date: 2020-11-27 16:50:07
  *
+ * @example
  * 例子：
+ * ```
+ * utils.string.formateUsername('此处用户名6个字') // 此处用户**
+ * ```
  */
 function formateUsername(name: string, length: number = 4): string {
   name = String(name);
@@ -36,14 +46,19 @@ function formateUsername(name: string, length: number = 4): string {
 
 /**
  *
- * @function intToStr 整形转换为指定位数字符串
+ * @function intToStr
+ *
+ * @description 整形转换为指定位数字符串
  *
  * @param {number} num -- 数字
  * @param {number} count -- 位数
  * @return {string}
  * @date: 2020-11-27 16:42:19
  *
+ * @example
  * 例子：
+ * ```
+ * ```
  */
 function intToStr(num: number, count: number = 2): string {
   var result: string = num.toString();
@@ -55,7 +70,9 @@ function intToStr(num: number, count: number = 2): string {
 
 /**
  *
- * @function labelTxtOverFunc 用户名隐藏
+ * @function labelTxtOverFunc
+ *
+ * @description 文本过长隐藏 (cocos 指定)
  *
  * @param {cc.Label} label -- label节点
  * @param {string} s -- 字符串
@@ -63,7 +80,10 @@ function intToStr(num: number, count: number = 2): string {
  * @return {}
  * @date: 2020-11-27 16:43:11
  *
+ * @example
  * 例子：
+ * ```
+ * ```
  */
 function labelTxtOverFunc(
   label: cc.Label = null,

@@ -1,8 +1,35 @@
-let sounds = [];
+/**
+ *
+ * @interface SoundInfo
+ *
+ * @description 音频资源对象
+ * @property {number} id  -- 音频播放序列
+ * @property {string} url -- 音频地址
+ * @property {any} data   -- 音频资源
+ * @property {number} play_time -- 时间戳
+ * @property {boolean} isLoop -- 循环播放
+ *
+ */
+interface SoundInfo {
+  id: number;
+  url: string;
+  data: any;
+  play_time: number;
+  isLoop: boolean;
+}
+
+/**
+ *  @var {Array} sounds
+ *
+ *  @description 音频资源缓存数组
+ */
+let sounds = [] as SoundInfo[];
 
 /**
  *
- * @function playSound 动态加载播放声音
+ * @function playSound
+ *
+ * @description 动态加载播放声音
  *
  * @param {string} url -- 路径
  * @param {boolean} isLoop -- 是否循环
@@ -38,10 +65,10 @@ function playSound(url: string, isLoop: boolean = false) {
 
 /**
  *
- * @function stopMusic 停止音乐播放
+ * @function stopMusic
  *
- * @param {}  --
- * @return {}
+ * @description 停止音乐播放
+ *
  * @date: 2020-11-27 16:59:41
  *
  * 例子：

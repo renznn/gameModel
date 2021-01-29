@@ -117,8 +117,26 @@ function playMovie(node: cc.Node, path: string) {
   });
 }
 
+/**
+ * @var {Object} res
+ * @description 资源加载缓存对象
+ */
 let res = {};
 
+/**
+ *
+ * @function load
+ * @description 资源加载
+ * @param {string} path --  资源路径
+ * @param {Function} callback -- 回调函数
+ * @return {}
+ * @date: 2021-01-29 17:23:33
+ *
+ * @example
+ *```
+ * utils.res.load(path,()=>{})
+ *```
+ */
 function load(path: string, callback?: Function) {
   if (!path) return cc.error('no path');
   // cc.log(res);
@@ -127,7 +145,7 @@ function load(path: string, callback?: Function) {
   cc.resources.load(path, (err, data) => {
     if (err) {
       cc.log(err);
-      return false;
+      return;
     }
     res[path] = data;
     // cc.log('--', res);
@@ -135,6 +153,28 @@ function load(path: string, callback?: Function) {
   });
 }
 
+/**
+ * Callback
+ *
+ * @callback addStuffCallback
+ * @param {number} progress -- 进度
+ */
+
+/**
+ *
+ * @function loadResList
+ * @description 批量加载资源
+ *
+ * @param {string[] | Object} res --  资源路径
+ * @param {addStuffCallback} callBack --  回调函数
+ * @return {}
+ * @date: 2021-01-29 17:25:42
+ *
+ * @example
+ *```
+ *utils.res.loadResList([], () => {});
+ *```
+ */
 function loadResList(res: string[] | Object, callBack: Function) {
   let paths: string[] = [];
   if ((res as string[]).length) {

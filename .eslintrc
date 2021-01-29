@@ -13,7 +13,7 @@
     "no-control-regex": "off",
     "func-names": "off",
     "import/order": "off",
-    "linebreak-style": [0, "error", "windows"]
+    "linebreak-style": [0, "error"]
   },
   "parserOptions": {
     "parser": "@typescript-eslint/parser"

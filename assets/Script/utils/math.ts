@@ -1,10 +1,38 @@
-//获取两点角度
-function getRotation(x1, y1, x2, y2): number {
+/**
+ *
+ * @function getRotation
+ * @description 获取两点角度
+ *
+ * @param {number} x1
+ * @param {number} y1
+ * @param {number} x2
+ * @param {number} y2
+ * @return {number}
+ * @date: 2021-01-29 16:54:48
+ *
+ * @example
+ *```
+ *
+ *```
+ */
+function getRotation(x1: number, y1: number, x2: number, y2: number): number {
   return (180 / Math.PI) * Math.atan2(y2 - y1, x2 - x1);
 }
 
 //根据两点获取长度
-function getLength(x1, y1, x2, y2): number {
+/**
+ *
+ * @function getLength
+ *
+ * @description 获取两点角度
+ * @param {number} x1
+ * @param {number} y1
+ * @param {number} x2
+ * @param {number} y2
+ * @return {number}
+ *
+ */
+function getLength(x1: number, y1: number, x2: number, y2: number): number {
   return Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
 }
 
