@@ -5,33 +5,33 @@ let sounds = [];
  * @function playSound 动态加载播放声音
  *
  * @param {string} url -- 路径
- * @param {boolean} music -- 
+ * @param {boolean} isLoop -- 是否循环
  * @return {}
  * @date: 2020-11-27 17:00:23
  *
  * 例子：
  */
-function playSound(url: string, music: boolean = false) {
-  url = 'sounds/' + url;
+function playSound(url: string, isLoop: boolean = false) {
+  // url = 'sounds/' + url;
 
-  var sound = this.sounds.find((r) => r.url == url);
+  var sound = sounds.find((r) => r.url == url);
   if (sound) {
-    if (music) return;
+    if (isLoop) return;
     if (new Date().getTime() - sound.play_time < 100) return;
     sound.play_time = new Date().getTime();
-    return cc.audioEngine.play(sound.data, music, 1);
+    return cc.audioEngine.play(sound.data, isLoop, 1);
   }
 
   cc.loader.loadRes(url, (err, data) => {
     //  var audio:cc.AudioSource= node.getComponent(cc.AudioSource);
     //  if(audio==null)
-    var id = cc.audioEngine.play(data, music, 1);
-    this.sounds.push({
+    var id = cc.audioEngine.play(data, isLoop, 1);
+    sounds.push({
       id: id,
       url: url,
       data: data,
       play_time: new Date().getTime(),
-      music: music
+      isLoop: isLoop
     });
   });
 }
@@ -47,10 +47,10 @@ function playSound(url: string, music: boolean = false) {
  * 例子：
  */
 function stopMusic() {
-  var sound = this.sounds.find((r) => r.music == true);
-
+  var sound = sounds.find((r) => r.isLoop == true);
+  // console.log('停止', sound);
   if (!sound) return;
-  this.sounds.splice(this.sounds.indexOf(sound));
+  sounds.splice(sounds.indexOf(sound));
   cc.audioEngine.stop(sound.id);
 }
 

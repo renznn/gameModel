@@ -135,4 +135,37 @@ function load(path: string, callback?: Function) {
   });
 }
 
-export default { loadRes, loadImg, loadUrlImg, loadPrefab, playMovie, load };
+function loadResList(res: string[] | Object, callBack: Function) {
+  let paths: string[] = [];
+  if ((res as string[]).length) {
+    paths = res as string[];
+  } else {
+    Object.keys(res).forEach((key) => {
+      paths.push(res[key]);
+    });
+  }
+  if (paths.length === 0) {
+    return 1;
+  }
+  let progress = 0;
+  callBack(0);
+  paths.forEach((path) => {
+    load(path, (prefab) => {
+      // console.log(path);
+      if (prefab) {
+        progress++;
+      }
+      callBack(progress);
+    });
+  });
+}
+
+export default {
+  loadRes,
+  loadImg,
+  loadUrlImg,
+  loadPrefab,
+  playMovie,
+  load,
+  loadResList
+};

@@ -6,6 +6,8 @@ import math from './math';
 import sounds from './sounds';
 import res from './res';
 import node from './node';
+import { httpPost } from './httpPost';
+import url from './url';
 
 const utils = {
   platformInfo,
@@ -15,6 +17,8 @@ const utils = {
   math,
   sounds,
   res,
-  node
+  node,
+  httpPost,
+  url
 };
 export default utils;

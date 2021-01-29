@@ -33,8 +33,8 @@ function randomArr(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 //随机获取整形
-function randomInt(value) {
-  return Math.floor(Math.random() * value);
+function randomInt(value, start = 0) {
+  return start + Math.floor(Math.random() * value);
 }
 
 // 生成随机数组

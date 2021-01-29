@@ -9,7 +9,7 @@
  *
  * 例子：
  */
-function fade_out(node: cc.Node, time: number = 0.3, free: boolean = true) {
+function fade_out(node: cc.Node, time: number = 0.5, free: boolean = true) {
   node.stopAllActions();
   var action = cc.fadeOut(time);
 
@@ -31,7 +31,7 @@ function fade_out(node: cc.Node, time: number = 0.3, free: boolean = true) {
  *
  * 例子：
  */
-function fade_in(node: cc.Node, time: number = 0.3) {
+function fade_in(node: cc.Node, time: number = 0.5) {
   node.active = true;
   node.opacity = 0;
   var action = cc.fadeIn(time);
