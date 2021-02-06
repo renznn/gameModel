@@ -167,10 +167,11 @@ export default class BaseComponent extends cc.Component {
   /**
    *
    * @function  show
-   * @description 显示节点
+   * @description 显示（隐藏）节点
    * @param {cc.Node} node -- 节点
-   * @param {boolean} isShow -- 显示/小时
+   * @param {boolean} isShow -- 显示/消失
    * @param {Function} callBack -- 回调函数
+   * @param {boolean} isFree -- 是否释放资源
    * @return {}
    * @date: 2021-01-29 18:16:30
    *
@@ -179,11 +180,16 @@ export default class BaseComponent extends cc.Component {
    *
    *```
    */
-  show(node: cc.Node, isShow: boolean, callBack?: Function) {
+  show(
+    node: cc.Node,
+    isShow: boolean = true,
+    callBack?: Function,
+    isFree: boolean = false
+  ) {
     if (!node) {
       return;
     }
-    isShow ? utils.node.fade_in(node) : utils.node.fade_out(node, 0.3, false);
+    isShow ? utils.node.fade_in(node) : utils.node.fade_out(node, 0.3, isFree);
     if (callBack) callBack();
   }
 
@@ -201,10 +207,10 @@ export default class BaseComponent extends cc.Component {
   inistantiantPrefab(
     node: cc.Node,
     path: string,
-    zIndex: number,
+    zIndex: number = 0,
     callback?: Function
   ) {
-    console.log(this);
+    // console.log(this);
     if (this._create[path]) {
       cc.log('防止重复创建');
       return;

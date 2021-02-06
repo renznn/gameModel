@@ -139,7 +139,7 @@ let res = {};
  */
 function load(path: string, callback?: Function) {
   if (!path) return cc.error('no path');
-  // cc.log(res);
+
   if (res[path]) return (callback && callback(res[path])) || res[path];
 
   cc.resources.load(path, (err, data) => {
@@ -148,7 +148,7 @@ function load(path: string, callback?: Function) {
       return;
     }
     res[path] = data;
-    // cc.log('--', res);
+    // cc.log('--', path, res);
     callback && callback(data);
   });
 }
@@ -200,6 +200,67 @@ function loadResList(res: string[] | Object, callBack: Function) {
   });
 }
 
+/**
+ *
+ * @function release
+ * @description 资源释放
+ * @param {string} path --  资源路径
+ * @param {Function} callback -- 回调函数
+ * @return {}
+ * @date: 2021-01-29 17:23:33
+ *
+ * @example
+ *```
+ * utils.res.release(path,()=>{})
+ *```
+ */
+function release(path: string, callback?: Function) {
+  if (!path) return cc.error('no path');
+  if (!res[path]) return cc.error('asset is not load');
+  cc.assetManager.releaseAsset(res[path]);
+  delete res[path];
+  // console.log(res);
+  callback && callback();
+}
+
+/**
+ *
+ * @function releaseResList
+ * @description 批量删除资源
+ *
+ * @param {string[] | Object} res --  资源路径
+ * @param {addStuffCallback} callBack --  回调函数
+ * @return {}
+ * @date: 2021-01-29 17:25:42
+ *
+ * @example
+ *```
+ *utils.res.releaseResList([], () => {});
+ *```
+ */
+function releaseResList(res: string[] | Object, callBack?: Function) {
+  let paths: string[] = [];
+  if ((res as string[]).length) {
+    paths = res as string[];
+  } else {
+    Object.keys(res).forEach((key) => {
+      paths.push(res[key]);
+    });
+  }
+  if (paths.length === 0) {
+    return 1;
+  }
+  let progress = 0;
+  callBack && callBack(0);
+  paths.forEach((path) => {
+    // console.log(path);
+    release(path, () => {
+      progress += 1;
+      callBack && callBack(progress);
+    });
+  });
+}
+
 export default {
   loadRes,
   loadImg,
@@ -207,5 +268,7 @@ export default {
   loadPrefab,
   playMovie,
   load,
-  loadResList
+  loadResList,
+  release,
+  releaseResList
 };
